@@ -19,10 +19,10 @@ var path = d3.geo.path()
                         .attr("width", width)
                         .attr("height", height);
 
-  // Append Div for tooltip to metrorailsvg
+  // Append Div for mytooltip to metrorailsvg
   var div = d3.select("#metrorailInfo")
               .append("div")
-              .attr("class", "tooltip")
+              .attr("class", "mytooltip")
               .style("display", "none");
 
 
@@ -32,7 +32,7 @@ var path = d3.geo.path()
               .enter().append("path")
               .attr("d", path);
 
-  //Append circles to show metrorail stations and append tooltip    
+  //Append circles to show metrorail stations and append mytooltip    
   metrorailsvg.selectAll("circle")
         .data(metrorail)
         .enter()
@@ -52,7 +52,7 @@ var path = d3.geo.path()
                .style("left", (d3.event.pageX + 10) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
         })
-        // fade out tooltip on mouse out
+        // fade out mytooltip on mouse out
         .on("mouseout", function(d) {
             div.transition()
                .duration(500)

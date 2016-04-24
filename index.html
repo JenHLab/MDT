@@ -49,25 +49,42 @@ circle:hover {
   display: none;
 }
 
+.axis text {
+        font-family: sans-serif;
+        font-size: 11px;
+      }
+
+
+.line {
+        fill: none;
+        stroke: #b3d0f2;
+        stroke-width: 1px;
+        stroke-opacity: 80%;
+}
+
+.line.unfocused{
+        stroke-opacity: 40%;
+}
+
+.line.focused {
+        stroke-width: 2px;
+        stroke-opacity: 100%;
+        stroke: #0365d4;
+}
+
 /* css for map svg*/
 path {
   stroke: black;
   fill:none;
 }
 
-pathl {
-stroke: black;
-  fill:none;
-  
-
-}
 
 circle {
   fill: orange;   
 }
 
-/* Style for Custom Tooltip for map svgs */
-div.tooltip {
+/* Style for Custom mytooltip for map svgs */
+div.mytooltip {
     position: absolute;
     text-align: left;
     min-width: 20px;
@@ -79,7 +96,7 @@ div.tooltip {
     pointer-events: none;
 }
 
-.tooltip p {
+.mytooltip p {
     margin: 10px;
 }
 
@@ -89,31 +106,36 @@ div.tooltip {
 <!-- Introduction to transit modes in Miami-Dade County -->
 <div id="introOverview">
     <h1>Miami-Dade Transit (MDT)</h1>
-      <p>Miami-Dade Transit (MDT) operates the Metrobus, Metrorail, Metromover and Paratransit (STS). MDT is the largest transit system in Florida and provides an alternative to private vehicles to more than 2.5 million residents in the county.</p> 
-      <p>The Metrobus is the most popular MDT service.</p>
+      <p>Miami-Dade Transit (MDT) operates the Metrobus, Metrorail, Metromover and Paratransit (STS). MDT is the largest transit system in Florida and provides an alternative to private vehicles to more than 2.5 million residents in the county.</p>
     <h3>Total Annual Ridership in Miami-Dade County</h3>
-  <div id="firstLineChart"></div>
-      <p>Ridership starting declining in 2008 due to the effects of the recession and increase in unemployment.</p>
-</div>
+  <div id="firstLineChart"></div> 
+  </div>
 
-<div id="introRidership">
+<!-- A look at ridership preferences -->
+  <div id="introRidership">
     <h3>Public Transportation Ridership Preferences in Miami-Dade County (October, 2015)</h3>
   <div id="form">
     <label><input type="radio" name="mode" value="bycount" checked><b>Total Ridership</b> (day of the week)</label>
     <label><input type="radio" name="mode" value="bypercent"><b>As Percent of Ridership Preferences</b></label>
   </div>
   <div id="chart"></div>
-</div>    
+      <p>The Metrobus is the most popular MDT service.</p>
+    <h3>Total Bus Annual Ridership in Miami-Dade County</h3>
+  <div id="secondLineChart"></div>   
+</div>
 
-<!-- Transit Mode: Metrobus section -->
-<div id="bus">
-    <h2>Metrobus</h2> 
-      <p>(METROBUS NFORMATION HERE, STATS, ETC.)</p>
+<!-- MetroBus -->
+<div id="bus"> 
+      <p>Metrobus throughout the years </p> 
+      <P>[PLACEHOLDER- LINE CHART- annual ridership in total, 2008-2015]</p> 
+      <P>[PLACEHOLDER- MULTI-LINE VORONOI- annual individual bus route ridership, 2008-2015]</p>
+    <h3>Route Ridership</h3> 
+  <div id="voronoiChart"></div> 
     <h4>Metrobus Stations</h4>
       <p>Hover each STOP to see the name of the metrobus station and address.</p>
-      <p>[PLACEHOLDER- map showing all metrorail stops; similar to Metromover map]</p> 
-    <P>[PLACEHOLDER- annual individual bus route ridership, 2008-2015]</p>
+<div id="metrobusInfo"></div>
 </div>
+
   
 <!-- Transit Mode: Metrorail section -->
 <div id="rail">
@@ -121,7 +143,7 @@ div.tooltip {
       <p>(METRORAIL NFORMATION HERE, STATS, ETC.)</p>
     <h4>Metrorail Stations</h4>
       <p>Hover each STOP to see the name of the metrorail station and address.</p>
-  <div id="metrorailInfo"></div> 
+   <div id="metrorailInfo"></div>  
       <p>PLACEHOLDER- annual ridership, 2008-2011]</p>
 </div>
 
@@ -157,6 +179,9 @@ div.tooltip {
 <script src="https://d3js.org/queue.v1.min.js"></script> <!-- queue js -->
 <script type="text/javascript" src="js/annualR.js"></script> <!-- Line chart: Ridership over the years -->
 <script type="text/javascript" src="js/stackedRidership.js"></script> <!-- Stacked bar: Ridership mode preferences and day of the week ridership -->
+<script type="text/javascript" src="js/annual_MetroBus.js"></script> <!-- Line chart: MetroBus ridership over the years -->
+<script type="text/javascript" src="js/voronoi.js"></script> <!-- Voronoi: MetroBus route ridership -->
+<script type="text/javascript" src="js/busStations.js"></script> <!-- BUS station map -->
 <script type="text/javascript" src="js/railStations.js"></script> <!-- MOVER station map -->
 <script type="text/javascript" src="js/moverStations.js"></script> <!-- RAIL station map -->
 <script type="text/javascript">
@@ -171,6 +196,22 @@ queue()
   .defer(d3.csv, "data/total_ridership_2015.csv")
   .await(loadIntroGraph);
 
+//Line chart: Bus ridership over the years
+queue()
+  .defer(d3.csv, "data/annual_ridership_metroBus.csv")
+  .await(loadAnnualBus);
+
+//Line chart: Bus ridership over the years
+queue()
+  .defer(d3.csv, "data/routeRidership.csv")
+  .await(loadVoronoi);
+
+//BUS station map
+queue()
+  .defer(d3.json, "data/dade.json")
+  .defer(d3.csv, "data/bus_stop.csv")
+  .await(loadedBus);
+
 //MOVER station map
 queue()
   .defer(d3.json, "data/dade.json")
@@ -182,6 +223,8 @@ queue()
   .defer(d3.json, "data/dade.json")
   .defer(d3.csv, "data/Metrorail_Stations.csv") // process
   .await(loadedRail);
+
+
 
 </script>
 </body>

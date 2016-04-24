@@ -40,7 +40,7 @@ var svg = d3.select("#chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+var mytooltip = d3.select("body").append("div").attr("class", "mytooltip");
 
 color.domain(cities);
 
@@ -188,7 +188,7 @@ color.domain(cities);
     number = d.y;
   }
 
-  tooltip
+  mytooltip
     .style("display", null) // this removes the display none setting from it
     .html("<p><b>Mode of Public Transportation:</b> " + d.city.replace(/_/g, " ") +
           "<br><b>Ridership:</b> " + number +
@@ -196,7 +196,7 @@ color.domain(cities);
   }
 
   function mousemove(d) {
-    tooltip
+    mytooltip
       .style("top", (d3.event.pageY - 10) + "px" )
       .style("left", (d3.event.pageX + 10) + "px");
     }
@@ -206,7 +206,7 @@ color.domain(cities);
       .transition()
       .style("stroke", "none");
 
-    tooltip.style("display", "none");  // this sets it to invisible!
+    mytooltip.style("display", "none");  // this sets it to invisible!
   }
 
   return stackedRiders;

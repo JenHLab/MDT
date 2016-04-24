@@ -1,41 +1,48 @@
-function loaded(error, dadeM, metromover) {
+function loadedBus(error, dadeM, metrobus) {
   if (error) throw error;
 
   //global variables for map svgs for bus, metrorail and metromover stations
-var width = 310,
-    height = 400;
+var width = 410,
+    height = 600;
 
 var projection = d3.geo.conicEqualArea()
-      .parallels([31,85])
+      .parallels([31,25])
       .rotate([81, 0])
       .center([0, 28])
-      .translate([-6250,-18400])
-      .scale(490000);
+      .translate([-300, -1450])
+      .scale(42000);
+      /*.parallels([31,85])
+      .rotate([81, 0])
+      .center([0, 28])
+      .translate([-600,-2540])
+      .scale(66500);*/
 
 var path = d3.geo.path()
     .projection(projection);
 
-  //Declare metrorailsvg and append it to metrorailInfo div
-  var metromoversvg = d3.select("#metromoverInfo").append("svg")
+  //Declare metrobuslsvg and append it to metrobusInfo div
+  var metrobussvg= d3.select("#metrobusInfo").append("svg")
                         .attr("width", width)
                         .attr("height", height);
 
-  // Append Div for mytooltip to metrorailsvg
-  var div = d3.select("#metromoverInfo")
+  // Append Div for mytooltip to metrobuslsvg
+  var div = d3.select("#metrobusInfo")
               .append("div")
               .attr("class", "mytooltip")
               .style("display", "none");
 
 
-  //Append map to metrorailsvg to plot the lat and lon of metrorail stations
-  metromoversvg.selectAll("path.state")
+  //Append map to metrobuslsvg to plot the lat and lon of metrobus stations
+  metrobussvg.selectAll("path.state")
               .data(topojson.feature(dadeM, dadeM.objects.dade).features)
               .enter().append("path")
-              .attr("d", path);
+              .attr("d", path)
+              .style("stroke-opacity", 0)
+              //.style("fill", 'blue');
 
   //Append circles to show metrorail stations and append mytooltip    
-  metromoversvg.selectAll("circle")
-        .data(metromover)
+  metrobussvg.selectAll("circle")
+        .data(metrobus)
         .enter()
         .append("circle")
         .attr("cx", function(d) {
@@ -44,7 +51,7 @@ var path = d3.geo.path()
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 3)
+        .attr("r", 1)
                        .style("fill", function(d) {
                          var returnColor;
                          if (d === 1) { returnColor = "green";
@@ -56,7 +63,7 @@ var path = d3.geo.path()
             div.transition()
                .duration(200)
                .style("display", null);
-            div.html("<p><b>Stop Name:</b> " + d.name+ "<br> <b>Address:</b> " + d.address+ "<br> <b> Loop:</b> " + d.loop)
+            div.html("<p><b>Stop ID:</b> " + d.stopid+ "<br> <b>Main Street:</b> " + d.main_street+ "<br> <b> Cross Street:</b> " + d.cross_street)
                .style("left", (d3.event.pageX + 10) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -67,6 +74,6 @@ var path = d3.geo.path()
                .style("display", "none");
         });
 
-        return Mover;
+        return Bus;
       
 }; // end loaded for metromover station map;
