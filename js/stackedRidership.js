@@ -53,6 +53,7 @@ color.domain(cities);
       .selectAll("text")
         .attr("dy", ".5em")
         .attr("transform", "rotate(-30)")
+        .style("fill", "#FFFFFF")
         .style("text-anchor", "end");
 
   svg.append("g")
@@ -62,7 +63,6 @@ color.domain(cities);
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
-      .style("fill", "#FFFFFF")
       .style("text-anchor", "end")
       .text("Ridership");
 
