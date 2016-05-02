@@ -52,13 +52,7 @@ var path = d3.geo.path()
             return projection([d.lon, d.lat])[1];
         })
         .attr("r", 1)
-                       .style("fill", function(d) {
-                         var returnColor;
-                         if (d === 1) { returnColor = "green";
-                         } else if (d === 2) { returnColor = "purple";
-                         } else if (d === 3) { returnColor = "red"; }
-                         return returnColor;
-                      })
+                       
         .on("mouseover", function(d) {
             div.transition()
                .duration(200)

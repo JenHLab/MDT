@@ -77,11 +77,17 @@ yScale.domain([ d3.max(annualR, function(d) {
           .attr("class", "line us")
           .attr("d", line)  // line is a function that will operate on the data array, with x and y.
           .attr("fill", "none")
-          .attr("stroke", "steelblue")
+          .attr("stroke", "#18bc9c")
           .attr("stroke-width", 1);
 
         // dots go on top of the line!
-
+		svg.append("text")
+                    .attr("x", (width - 660))             
+                    .attr("y", 5 - (margin.top / 2))
+                    .style("font-weight", "bold") 
+                    .style("font-size", "19px") 
+                    .style("fill", "#0365d4");
+       
        var circles = svg.selectAll("circle")
                 .data(annualR)
                 .enter()
