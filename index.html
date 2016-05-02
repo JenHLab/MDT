@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html lang="en">
+
 <head>
 
-<link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Amiri' rel='stylesheet' type='text/css'>
-<style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-body {
-  font-family: serif;
-  font: 12px;
-  padding: 10px;
-  margin-top: 2px;
-}
+    <title>Miami-Dade Metrobus</title>
 
-h1, h2 {
-  font-family: 'Amiri', serif;
-}
-/* css for annual ridership line graph. For axis css see below stacked bar chart */
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
 circle:hover {
-        stroke: gray;
+        
       }
 
 .axis text {
@@ -42,7 +54,7 @@ circle:hover {
 }
 
 .bar {
-  fill: steelblue;
+  
 }
 
 .x.axis path {
@@ -57,8 +69,8 @@ circle:hover {
 
 .line {
         fill: none;
-        stroke: #b3d0f2;
-        stroke-width: 1px;
+        stroke: #18bc9c;
+        stroke-width: 1.5px;
         stroke-opacity: 80%;
 }
 
@@ -69,7 +81,7 @@ circle:hover {
 .line.focused {
         stroke-width: 2px;
         stroke-opacity: 100%;
-        stroke: #0365d4;
+        stroke: #2c3e50;
 }
 
 /* css for map svg*/
@@ -80,11 +92,13 @@ path {
 
 
 circle {
-  fill: orange;   
+  fill: #18bc9c;   
 }
 
 /* Style for Custom mytooltip for map svgs */
 div.mytooltip {
+    font-family: sans-serif;
+    font: 12px;
     position: absolute;
     text-align: left;
     min-width: 20px;
@@ -100,146 +114,251 @@ div.mytooltip {
     margin: 10px;
 }
 
-#introRidership{
+/*#introRidership{
   background-color:gray;
     color:black;
     margin:20px;
     padding:20px;
+}*/
+hr{
+    color: #18bc9c;
 }
 
-/*.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}*/
-</style>
+
+    </style>
+
 </head>
-<body>
-<!-- <div>
-<iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Miami-Dade Urban Dev Area and 2010 Population" src="//www.arcgis.com/apps/Embed/index.html?webmap=e7adefb0c8d54292862ce3109c1ba36f&amp;extent=-80.7986,25.387,-79.5022,26.007&amp;zoom=true&amp;scale=true&amp;legend=true&amp;disable_scroll=false&amp;theme=light"></iframe></div> -->
-<!-- Introduction to transit modes in Miami-Dade County -->
-<div id="introOverview">
-  
-    <h1>Miami-Dade Transit (MDT)</h1>
-    <div style="float: left">
-      <p>Miami-Dade Transit (MDT) operates the Metrobus, Metrorail, Metromover and Paratransit (STS). MDT is the largest transit system in Florida and provides an alternative to private vehicles to more than 2.5 million residents in the county.</p>
-      </div>
-    <h3>Total Annual Ridership in Miami-Dade County</h3>
-  <div id="firstLineChart" style="float: right;"></div> 
-  </div>
 
-<!-- A look at ridership preferences -->
-  <div id="introRidership">
-    <h3>Public Transportation Ridership Preferences in Miami-Dade County (October, 2015)</h3>
-  <div id="form">
-    <label><input type="radio" name="mode" value="bycount" checked><b>Total Ridership</b> (day of the week)</label>
-    <label><input type="radio" name="mode" value="bypercent"><b>As Percent of Ridership Preferences</b></label>
-  </div>
-  <div id="chart"></div>
-      <p>The Metrobus is the most popular MDT service.</p>
-    <h3>Total Bus Annual Ridership in Miami-Dade County</h3>
-  <div id="secondLineChart"></div>   
-</div>
+<body id="page-top" class="index">
 
-<!-- MetroBus -->
-<div id="bus"> 
-      <p>Metrobus throughout the years </p> 
-      <P>[PLACEHOLDER- LINE CHART- annual ridership in total, 2008-2015]</p> 
-      <P>[PLACEHOLDER- MULTI-LINE VORONOI- annual individual bus route ridership, 2008-2015]</p>
-    <h3>Route Ridership</h3> 
-  <div id="voronoiChart"></div> 
-    <h4>Metrobus Stations</h4>
-      <p>Hover each STOP to see the name of the metrobus station and address.</p>
-<div id="metrobusInfo"></div>
-</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Miami-Dade Metrobus</a>
+            </div>
 
-  
-<!-- Transit Mode: Metrorail section -->
-<div id="rail">
-    <h2>Metrorail</h2> 
-      <p>(METRORAIL NFORMATION HERE, STATS, ETC.)</p>
-    <h4>Metrorail Stations</h4>
-      <p>Hover each STOP to see the name of the metrorail station and address.</p>
-   <div id="metrorailInfo"></div>  
-      <p>PLACEHOLDER- annual ridership, 2008-2011]</p>
-</div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Background</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">Metrobus</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Challenges</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-<!-- Transit Mode: Metromover section -->
-<div id="mover">
-    <h2>Metromover</h2>
-      <p>(METROMOVERI NFORMATION HERE, STATS, ETC.)</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
+                    <div class="intro-text">
+                        <h1 class="name">Miami-Dade County Metrobus System</span>
+                        <!-- <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Background</h2><br><br>
+                    <!-- <hr class="star-primary"> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>The public transportation system in the county is managed by the Miami-Dade Transit (MDT) agency. MDT can trace its origins back to 1960 when County Commission passed an ordinance to unify the different transit operations into one countywide service.</p>
+                    <p>MDT offers bus services (Metrobus), rail services (Metrorail and Metromover), and Paratransit services, which is a door to door service for residents with disabilities. Annual ridership of public transportation in the county has steadily increased since 2003, reaching a record high ridership of 114,208,800 in 2008. During the recession, ridership decreased as a result of job losses. However, with the improvement of the economy in 2010, ridership is slowly increasing.</p>
+                    <h3>Total Annual Ridership in Miami-Dade County</h3>
+                    <div id="firstLineChart"></div> 
+                    <p>TIn recent years, an increase in traffic congestion has raised the issue of the county’s limited transportation options for commuters who live in the southwest areas of the county and work closer to the City of Miami. While county officials have proposed plans to expand roads, install intelligent traffic signals and construct new metrorail stations, not much has been discussed on how to improve the metrobus system, the most popular public transportation option for residents.</p>
+                    
+                </div>
+        </div>
+        <hr>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Metrobus</h2><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>The metrobus is the most popular form of public transportation for Miami-Dade residents. This can be attributed to the fact that it is the only public transportation network available throughout the county. </p> 
+                    <p>The metrobus network covers area from Miami Beach to west Miami-Dade and from Key Largo to the Broward County line. The metrobus has more than 90 routes and a fleet of over 600 buses.  </p>
+                    <p>Ridership preferences show that the metrobus is mostly used during Monday through Friday. This provides insight that metrobus is heavily used by commuters. </p><br>
+
+                    <h3>Ridership Preferences in Miami-Dade County (October, 2015)</h3>
+                      <div id="form">
+                        <label><input type="radio" name="mode" value="bycount" checked><b>Total Ridership</b> (day of the week)</label>
+                        <label><input type="radio" name="mode" value="bypercent"><b>As Percent of Ridership Preferences</b></label>
+                      </div>
+                    <div id="chart"></div>
+                    </div>
+
+                    <p>In fact, annual metrobus ridership data shows how during the economic recession ridership sharply declined. It was not until the Miami-Dade economy started improving in 2010, that metrobus ridership began to increase.  
+                    </p>
+                    <h3>Metrobus Annual Ridership in Miami-Dade County</h3>
+                    <div id="secondLineChart"></div>
+                    <p>The most popular metrobus route is Route S with an average monthly ridership of more than 350,000 riders since 2009. Route S starts at the Government Center in Downtown Miami, crosses to Miami Beach over the MacArthur Causeway and transits Collins Avenue until reaching Aventura Boulevard.</p>
+                    <h3>Metrobus Route Ridership in Miami-Dade County</h3>
+                <div id="voronoiChart"></div> 
+                    <p>Route 11 is the second most popular route stretching from Downtown Miami west to 107th Avenue on Flagler St and ending at FIU Modesto Maidique Campus. Route 11 has a monthly ridership average of over 300,000 riders.</p>
+                    <p>Route L, with an average of more than 250,00 riders, is the third most ppular route. It starts at the Miami Beach Convention Center, goes north on Collins Avenue and heads west on the 79 St Causeway to the Hialeah Metrorail Station stopping at the Northside Metrorail Station, Amtrak Passenger Terminal, and Tri-Rail Metrorail Station.</p>
+                    <p>All other routes average as little as 1,000 riders per month up to 200,000. The least popular bus routes are Route 254, Route 500, Route 354 and Route 202.</p>
+                </div>
+                <div>
     
-    <h3>Metromover Stations</h3>
-      <p>Hover each STOP to see the name of the metromover station and address.</p>
-  <div id="metromoverInfo"></div>
-      <p>PLACEHOLDER- annual ridership, 2008-2011]</p>
-</div>
+                <!-- <div class="col-lg-4">
+                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                </div> -->
+                
+            </div>
+        </div>
+    </section>
 
-<!-- Sources -->
-<div id="sources">
-  <p style="font-size: 14px;">
-    <b>Sources:</b> 
-      <br>
-    <a href="factfinder.census.gov"> American FactFinder</a>. US Census Bureau. 2016.
-      <br>
-    <a href="http://www.miamidade.gov/transit/home.asp"> Transportation and Public Works</a>. Miami-Dade County. 2016.
-      <br>
-      <a href="http://www.miamidade.gov/transit/reports-plans.asp"> Ridership Technical Reports</a>. Transportation and Public Workds. Miami-Dade County. 2016.
-      <br>
-      <a href="http://www.miamidade.gov/transit/reports-plans.asp"> Transportation</a>. Miami-Dade County GIS Open Data. Miami-Dade County. 2016.
-      <br>
-  </p>
-</div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>The Challenge</h2><br><br>
+                    <!-- <hr class="star-primary"> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>MDT faces numerous challenges in the transportation system infrastructure. Trends in population growth and rising prices in the real estate market are making new, affordable constructions in the southwestern areas of the county appealing for residents. With the metrobus being the only countywide public transportation system for commuters and residents alike, the challenge for MDT is to make sure that in the short term, the metrobus can prove to be a feasible alternative to commuters.</p>
+                    <p>Yet, it is precisely the southwestern portions of the county that have an even more limited transportation infrastructure. In the next couple of years, Miami-Dade commuters can expect an increase in traffic congestion particularly in the areas of Kendall, Cutler Ridge, and Homestead, and on main highways like the Turnpike between Florida City and the City of Miami and the Palmetto (SR-826).</p>
+                    <h3>Map of Metrobus Stations Throughout Miami-Dade</h3>
+                    <div id="metrobusInfo"></div>
+                    <p> It’s going to take the energy and innovation of an engaged civic community to propose improvements to the public transportation system and to pressure the county government to act on those proposals. </p>
+                </div>
+        </div>
+    </section>
 
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script src="https://d3js.org/queue.v1.min.js"></script> <!-- queue js -->
-<script type="text/javascript" src="js/annualR.js"></script> <!-- Line chart: Ridership over the years -->
-<script type="text/javascript" src="js/stackedRidership.js"></script> <!-- Stacked bar: Ridership mode preferences and day of the week ridership -->
-<script type="text/javascript" src="js/annual_MetroBus.js"></script> <!-- Line chart: MetroBus ridership over the years -->
-<script type="text/javascript" src="js/voronoi.js"></script> <!-- Voronoi: MetroBus route ridership -->
-<script type="text/javascript" src="js/busStations.js"></script> <!-- BUS station map -->
-<script type="text/javascript" src="js/railStations.js"></script> <!-- MOVER station map -->
-<script type="text/javascript" src="js/moverStations.js"></script> <!-- RAIL station map -->
-<script type="text/javascript">
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Freelancer</h3>
+                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; www.jlab.miami 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-//Line chart: Ridership over the years
-queue()
-  .defer(d3.csv, "data/annual_ridership.csv")
-  .await(loadAnnual);
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-//Stacked bar: Ridership mode preferences and day of the week ridership
-queue()
-  .defer(d3.csv, "data/total_ridership_2015.csv")
-  .await(loadIntroGraph);
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
 
-//Line chart: Bus ridership over the years
-queue()
-  .defer(d3.csv, "data/annual_ridership_metroBus.csv")
-  .await(loadAnnualBus);
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
 
-//Line chart: Bus ridership over the years
-queue()
-  .defer(d3.csv, "data/routeRidership.csv")
-  .await(loadVoronoi);
-
-//BUS station map
-queue()
-  .defer(d3.json, "data/dade.json")
-  .defer(d3.csv, "data/bus_stop.csv")
-  .await(loadedBus);
-
-//MOVER station map
-queue()
-  .defer(d3.json, "data/dade.json")
-  .defer(d3.csv, "data/Metromover_Stations.csv") // process
-  .await(loaded);
-
-//RAIL station map
-queue()
-  .defer(d3.json, "data/dade.json")
-  .defer(d3.csv, "data/Metrorail_Stations.csv") // process
-  .await(loadedRail);
+    <!-- Custom Theme JavaScript -->
+    <script src="js/freelancer.js"></script>
 
 
+    <!-- D3.js -->
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <!-- queue js -->
+    <script src="https://d3js.org/queue.v1.min.js"></script> 
+    <!-- Line chart: Ridership over the years -->
+    <script type="text/javascript" src="js/annualR.js"></script>
+    <!-- Line chart: MetroBus ridership over the years -->
+    <script type="text/javascript" src="js/annual_MetroBus.js"></script> 
+    <!-- Stacked bar: Ridership mode preferences and day of the week ridership -->
+    <script type="text/javascript" src="js/stackedRidership.js">
+    </script> 
+    <!-- Voronoi: MetroBus route ridership -->
+    <script type="text/javascript" src="js/voronoi.js"></script>
+    <!-- BUS station map -->
+    <script type="text/javascript" src="js/busStations.js"></script>
 
-</script>
+    <script type="text/javascript">
+
+        //Line chart: Ridership over the years
+        queue()
+          .defer(d3.csv, "data/annual_ridership.csv")
+          .await(loadAnnual);
+        //Line chart: Bus ridership over the years
+        queue()
+          .defer(d3.csv, "data/annual_ridership_metroBus.csv")
+          .await(loadAnnualBus);
+
+        //Stacked bar: Ridership mode preferences and day of the week ridership
+        queue()
+          .defer(d3.csv, "data/total_ridership_2015.csv")
+          .await(loadIntroGraph);
+
+        //Line chart: Bus ridership over the years
+        queue()
+          .defer(d3.csv, "data/routeRidership.csv")
+          .await(loadVoronoi);
+
+        //BUS station map
+        queue()
+          .defer(d3.json, "data/dade.json")
+          .defer(d3.csv, "data/bus_stop.csv")
+          .await(loadedBus);
+
+    </script>
+
 </body>
+
 </html>

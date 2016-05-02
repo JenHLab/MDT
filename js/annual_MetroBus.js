@@ -1,4 +1,3 @@
-
 function loadAnnualBus(error, annualR) {
   if (error) throw error;
 

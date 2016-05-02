@@ -142,8 +142,8 @@ function loadVoronoi(error, data) {
                     .attr("y", 7 - (margin.top / 2))
                     .style("font-weight", "bold") 
                     .style("font-size", "19px") 
-                    .style("fill", "#0365d4")  
-                    .text("Theme route Visitors 2007-2014");
+                    .style("fill", "#0365d4");  
+                    /*.text("Theme route Visitors 2007-2014");*/
 				//Axes
 				svg.append("g")
 					.attr("class", "x axis")
