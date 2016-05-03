@@ -42,18 +42,22 @@ var path = d3.geo.path()
 
   //Append circles to show metrorail stations and append mytooltip 
 
-  /*metrobussvg.selectAll("circle")
+  metrobussvg.selectAll("circle")
         .data(homes)
         .enter()
         .append("circle")
-        .style("fill", 'blue')
+        .style("fill", 'orange')
+        .style("opacity", 0.7)
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];
         })
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 100)*/
+        .attr("r", 15)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
 
   metrobussvg.selectAll("circle")
         .data(metrobus)
@@ -65,7 +69,60 @@ var path = d3.geo.path()
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 1);
+        .attr("r", 1)
+
+
+  function mouseover(d) {
+  // this will highlight both a dot and its line.
+
+  var number;
+
+  d3.select(this)
+    .transition()
+    .style("stroke", "black");
+
+  
+
+  mytooltip
+    .style("display", null) // this removes the display none setting from it
+    .html("<p><b>Mode of Public Transportation:</b> " + d.town);
+  }
+
+  function mousemove(d) {
+    mytooltip
+      .style("top", (d3.event.pageY - 10) + "px" )
+      .style("left", (d3.event.pageX + 10) + "px");
+    }
+
+  function mouseout(d) {
+    d3.select(this)
+      .transition()
+      .style("stroke", "none");
+
+    mytooltip.style("display", "none");  // this sets it to invisible!
+  };
+
+  function drawLegend() {
+
+    var legend = svg.selectAll(".legend")
+        .data(cities_reversed) // make sure your labels are in the right order -- if not, use .reverse() here.
+      .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    legend.append("rect")
+        .attr("x", width)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d) {return color(d)});
+
+    legend.append("text")
+        .attr("x", width + 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text(function(d, i) { return cities_reversed[i].replace(/_/g, " "); });
+  }
 
         return loadedBus;
       
