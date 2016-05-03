@@ -1,4 +1,4 @@
-function loadedBus(error, dadeM, metrobus) {
+function loadedBus(error, dadeM, metrobus, homes) {
   if (error) throw error;
 
   //global variables for map svgs for bus, metrorail and metromover stations
@@ -40,7 +40,21 @@ var path = d3.geo.path()
               .style("stroke-opacity", 0)
               //.style("fill", 'blue');
 
-  //Append circles to show metrorail stations and append mytooltip    
+  //Append circles to show metrorail stations and append mytooltip 
+
+  /*metrobussvg.selectAll("circle")
+        .data(homes)
+        .enter()
+        .append("circle")
+        .style("fill", 'blue')
+        .attr("cx", function(d) {
+            return projection([d.lon, d.lat])[0];
+        })
+        .attr("cy", function(d) {
+            return projection([d.lon, d.lat])[1];
+        })
+        .attr("r", 100)*/
+
   metrobussvg.selectAll("circle")
         .data(metrobus)
         .enter()
@@ -51,23 +65,8 @@ var path = d3.geo.path()
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 1)
-                       
-        .on("mouseover", function(d) {
-            div.transition()
-               .duration(200)
-               .style("display", null);
-            div.html("<p><b>Stop ID:</b> " + d.stopid+ "<br> <b>Main Street:</b> " + d.main_street+ "<br> <b> Cross Street:</b> " + d.cross_street)
-               .style("left", (d3.event.pageX + 10) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-        })
-        // fade out mytooltip on mouse out
-        .on("mouseout", function(d) {
-            div.transition()
-               .duration(500)
-               .style("display", "none");
-        });
+        .attr("r", 1);
 
-        return Bus;
+        return loadedBus;
       
 }; // end loaded for metromover station map;

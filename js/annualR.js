@@ -146,6 +146,6 @@ yScale.domain([ d3.max(annualR, function(d) {
       mytooltip.style("display", "none");  // this sets it to invisible!
     }
 
-    return totalRidership;
+    return loadAnnual;
     
 }; //end line chart

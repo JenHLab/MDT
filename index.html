@@ -187,6 +187,7 @@ hr{
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                <img src="img/bus.jpg">
                     <h2>Background</h2><br><br>
                     <!-- <hr class="star-primary"> -->
                 </div>
@@ -209,6 +210,7 @@ hr{
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                <img src="img/buses.jpg">
                     <h2>Metrobus</h2><br><br>
                 </div>
             </div>
@@ -280,6 +282,8 @@ hr{
                   <a href="http://www.miamidade.gov/transit/reports-plans.asp"> Ridership Technical Reports</a>. Transportation and Public Workds. Miami-Dade County. 2016.
                   <br>
                   <a href="http://www.miamidade.gov/transit/reports-plans.asp"> Transportation</a>. Miami-Dade County GIS Open Data. Miami-Dade County. 2016.
+                  <br>
+                  <a href="http://www.trulia.com/for_sale/12086_c/"> Trulia</a>. Homes for Sale Miami-Dade County. Trulia.com. 2016.
                   <br>
               </p>
                 </div>
@@ -378,6 +382,7 @@ hr{
         queue()
           .defer(d3.json, "data/dade.json")
           .defer(d3.csv, "data/bus_stop.csv")
+          /*.defer(d3.csv, "data/homes.csv")*/
           .await(loadedBus);
 
     </script>

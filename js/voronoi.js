@@ -190,6 +190,6 @@ function loadVoronoi(error, data) {
 			           .style("left", (d3.event.pageX + 10) + "px");
 	           }
 
-	           return data;
+	           return loadVoronoi;
     
 };

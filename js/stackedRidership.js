@@ -210,6 +210,6 @@ color.domain(cities);
     mytooltip.style("display", "none");  // this sets it to invisible!
   }
 
-  return stackedRiders;
+  return loadIntroGraph;
 
 }; //end stacked bar;
