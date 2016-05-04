@@ -1,4 +1,4 @@
-function loadAnnualBus(error, annualR) {
+function loadAnnualBus(annualR) {
 
 
   var fullwidth = 700;

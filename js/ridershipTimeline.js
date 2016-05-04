@@ -1,5 +1,5 @@
 //Load data
-			function loadMultiple(error, timeline) {
+			function loadMultiple(timeline) {
 
 				//Dimensions and padding
 			var fullwidth = 500;

@@ -1,4 +1,4 @@
-function loadMapTwo(error, dadeM, metromover, metrobus) {
+function loadMapTwo(dadeM, metromover, metrobus) {
 
   //global variables for map svgs for bus, metrorail and metromover stations
 var width = 410,

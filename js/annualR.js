@@ -1,5 +1,5 @@
 
-function loadAnnual(error, annualR) {
+function loadAnnual(annualR) {
 
   var fullwidth = 700;
   var fullheight = 300;

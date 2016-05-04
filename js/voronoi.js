@@ -1,4 +1,4 @@
-function loadVoronoi(error, voronoi) {
+function loadVoronoi(voronoi) {
 
 
 //Dimensions and padding

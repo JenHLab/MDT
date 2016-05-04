@@ -1,4 +1,4 @@
-function loadedBus(error, dadeM, metrobus, homes) {
+function loadedBus(dadeM, metrobus, homes) {
 
 
   //global variables for map svgs for bus, metrorail and metromover stations
@@ -70,6 +70,8 @@ var path = d3.geo.path()
   
 
   mytooltip
+    .data(homes)
+    .enter()
     .style("display", null) // this removes the display none setting from it
     .html("<p><b>Area:</b> " + d.town);
   }
