@@ -3,7 +3,7 @@ function loadedBus(error, dadeM, metrobus, homes) {
 
   //global variables for map svgs for bus, metrorail and metromover stations
 var width = 310,
-    height = 800;
+    height = 500;
 
 var projection = d3.geo.conicEqualArea()
       .parallels([31,25])
