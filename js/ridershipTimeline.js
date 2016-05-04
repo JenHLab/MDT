@@ -137,17 +137,7 @@
 						.duration(2000)
 						.attr("d", line(newdata));
 
-					/* to understand the above, this is what I had before I added more cases:
-					if (thisButton.attr("id") === "angola") {
-						console.log("angola");
-						var newdata = angola; // i had saved out the values for angola already.
-						d3.select("button#congo").classed("selected", false);
-					}
-
-					etc. -- with each button "id" as a separate if statement.
-					selectedline.transition().attr("d", line(newdata));
-					*/
-
+					
 				});
 		return loadMultiple;
 	

@@ -106,27 +106,7 @@ var path = d3.geo.path()
     mytooltip.style("display", "none");  // this sets it to invisible!
   };
 
-  function drawLegend() {
-
-    var legend = svg.selectAll(".legend")
-        .data(cities_reversed) // make sure your labels are in the right order -- if not, use .reverse() here.
-      .enter().append("g")
-        .attr("class", "legend")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-    legend.append("rect")
-        .attr("x", width)
-        .attr("width", 18)
-        .attr("height", 18)
-        .style("fill", function(d) {return color(d)});
-
-    legend.append("text")
-        .attr("x", width + 24)
-        .attr("y", 9)
-        .attr("dy", ".35em")
-        .style("text-anchor", "start")
-        .text(function(d, i) { return cities_reversed[i].replace(/_/g, " "); });
-  }
+  
 
         return loadedBus;
       
