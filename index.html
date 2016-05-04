@@ -380,7 +380,33 @@ circle:hover {
 
     <script type="text/javascript">
 
-        //Map One: Metrorail and metrobus stops
+        //Queue for all graphs
+        queue()
+            .defer(d3.json, "data/dade.json") //dadeM -- loadMapOne ; loadMapTwo
+            .defer(d3.csv, "data/Metrorail_Stations.csv")//metrorail --loadMapOne
+            .defer(d3.csv, "data/bus_stop.csv") //metrobus -- loadMapOne ; loadMapTwo
+            .defer(d3.csv, "data/Metromover_Stations.csv") //metromover -- loadMapTwo
+            .defer(d3.csv, "data/multipleLine.csv") //timeline -- loadMultiple
+            .defer(d3.csv, "data/total_ridership_2015.csv") //data -- loadIntroGraph
+            .defer(d3.csv, "data/routeRidership.csv")//voronoi -- loadVoronoi
+            .defer(d3.csv, "data/homes.csv")//homes -- loadedBus
+            .await(loaded);
+        
+        //function loaded
+
+
+        function loaded(error, dadeM, metrorail, metrobus, metromover, timeline, data, voronoi, homes) {
+
+      if (error) {console.log(error);}
+
+      loadMapOne(dadeM, metrorail, metrobus);
+      loadMapTwo(dadeM, metromover, metrobus);
+      loadMultiple(timeline);
+      loadIntroGraph(data);
+      loadVoronoi(voronoi);
+      loadedBus(dadeM, metrobus, homes);
+    }
+        /*//Map One: Metrorail and metrobus stops
         queue()
             .defer(d3.json, "data/dade.json")
             .defer(d3.csv, "data/Metrorail_Stations.csv")
@@ -424,7 +450,7 @@ circle:hover {
           .defer(d3.json, "data/dade.json")
           .defer(d3.csv, "data/bus_stop.csv")
           .defer(d3.csv, "data/homes.csv")
-          .await(loadedBus);
+          .await(loadedBus);*/
 
     </script>
 

@@ -1,5 +1,4 @@
 function loadMapTwo(error, dadeM, metromover, metrobus) {
-  if (error) throw error;
 
   //global variables for map svgs for bus, metrorail and metromover stations
 var width = 410,

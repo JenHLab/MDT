@@ -1,5 +1,5 @@
-function loadVoronoi(error, data) {
-  if (error) throw error;
+function loadVoronoi(error, voronoi) {
+
 
 //Dimensions and padding
             var fullwidth = 700;
@@ -63,13 +63,13 @@ function loadVoronoi(error, data) {
 			
 
 				//Data is loaded in, but we need to restructure it.
-				var years = d3.keys(data[0]).slice(0); //
-
+				var years = d3.keys(voronoi[0]).slice(0,7); //
+				console.log(years);
 				//Create a new, empty array to hold our restructured dataset
 				var dataset = [];
 
 				//Loop once for each row in data
-				data.forEach(function (d, i) {
+				voronoi.forEach(function (d, i) {
 
 					var routeRidership = [];
 

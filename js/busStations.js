@@ -1,5 +1,5 @@
 function loadedBus(error, dadeM, metrobus, homes) {
-  if (error) throw error;
+
 
   //global variables for map svgs for bus, metrorail and metromover stations
 var width = 310,
@@ -26,10 +26,9 @@ var path = d3.geo.path()
                         .attr("height", height);
 
   // Append Div for mytooltip to metrobuslsvg
-  var div = d3.select("#metrobusInfo")
-              .append("div")
-              .attr("class", "mytooltip")
-              .style("display", "none");
+  var mytooltip = d3.select("body")
+        .append("div")
+        .attr("class", "mytooltip");
 
 
   //Append map to metrobuslsvg to plot the lat and lon of metrobus stations
@@ -59,27 +58,10 @@ var path = d3.geo.path()
         .on("mousemove", mousemove)
         .on("mouseout", mouseout);
 
-  metrobussvg.selectAll("circle")
-        .data(metrobus)
-        .enter()
-        .append("circle")
-        .attr("cx", function(d) {
-            return projection([d.lon, d.lat])[0];
-        })
-        .attr("cy", function(d) {
-            return projection([d.lon, d.lat])[1];
-        })
-        .attr("r", 1);
-
-
-
-        
-
-
   function mouseover(d) {
   // this will highlight both a dot and its line.
 
-  var number;
+  
 
   d3.select(this)
     .transition()
@@ -89,7 +71,7 @@ var path = d3.geo.path()
 
   mytooltip
     .style("display", null) // this removes the display none setting from it
-    .html("<p><b>Mode of Public Transportation:</b> " + d.town);
+    .html("<p><b>Area:</b> " + d.town);
   }
 
   function mousemove(d) {
@@ -104,7 +86,21 @@ var path = d3.geo.path()
       .style("stroke", "none");
 
     mytooltip.style("display", "none");  // this sets it to invisible!
-  };
+  }
+  
+
+
+  metrobussvg.selectAll("circle")
+        .data(metrobus)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) {
+            return projection([d.lon, d.lat])[0];
+        })
+        .attr("cy", function(d) {
+            return projection([d.lon, d.lat])[1];
+        })
+        .attr("r", 1);
 
   
 

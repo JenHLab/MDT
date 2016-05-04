@@ -1,5 +1,5 @@
 function loadIntroGraph(error, data) {
-  if (error) throw error;
+  
 
  data.sort(function(a, b) {return d3.ascending(a.City,b.City);});
 

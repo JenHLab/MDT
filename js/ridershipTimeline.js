@@ -1,6 +1,5 @@
 //Load data
-			function loadMultiple(error, data) {
-			if (error) throw error;
+			function loadMultiple(error, timeline) {
 
 				//Dimensions and padding
 			var fullwidth = 500;
@@ -78,11 +77,11 @@
 							return d.Country;
 						})
 						.sortValues(function (a, b) { return dateFormat.parse(a.Year) - dateFormat.parse(b.Year)})
-						.entries(data);
+						.entries(timeline);
 
 				// doing the max on the unnested data - easier to get the full set of Measles that way!
 				yScale.domain([
-					d3.max(data, function(d) {
+					d3.max(timeline, function(d) {
 							return +d.Measles;
 					}),
 					4000000
@@ -103,7 +102,7 @@
 				var metrobus = get_values_for_country("Metrobus");
 
 				svg.selectAll("path")
-					.data( [data] )
+					.data( [metrobus] )
 					.enter()
 					.append("path")
 					.attr("class", "line")
