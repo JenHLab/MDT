@@ -133,6 +133,13 @@ text.linelabel {
                 color: gray;
             }
 
+.portfolioImg{
+    /*background-image: url(img/sBus_Pen.jpg);*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+
+}
+
 
 
     </style>
@@ -184,7 +191,7 @@ text.linelabel {
                 <div class="col-lg-12">
                     <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
                     <div class="intro-text">
-                        <h1 class="name">Miami-Dade County Metrobus System</span>
+                        <h1 class="name">Miami-Dade County Metrobus</span>
                         <!-- <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span> -->
                     </div>
                 </div>
@@ -193,11 +200,11 @@ text.linelabel {
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section id="portfolio" class="portfolioImg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                <img src="img/sBus.jpg">
+                <img src="img/sBus_Pencil.jpg">
                     <h2>Background</h2><br><br>
                     <!-- <hr class="star-primary"> -->
                 </div>
@@ -205,13 +212,14 @@ text.linelabel {
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>The public transportation system in the county is managed by the Miami-Dade Transit (MDT) agency. MDT can trace its origins back to 1960 when County Commission passed an ordinance to unify the different transit operations into one countywide service.</p>
-                    <p>MDT offers bus services (Metrobus), rail services (Metrorail and Metromover), and Paratransit services, which is a door to door service for residents with disabilities.</p>
+                    <p>MDT offers bus services (<span style="color: #18bc9c;"><b>Metrobus</b></span>), rail services (<span style="color: #4646ff"><b>Metrorail</b></span> and <span style="color: #ff8c00;"><b>Metromover</b></span>), and Paratransit services, which is a door to door service for residents with disabilities.</p>
                     <div id="metrorailInfo" style="float: left;"></div><div id="metromoverInfo" style="float: right;"></div>
-                    <p> <b>The map on the left</b> shows the network of <span style="color: blue">metrorail stations</span> compared to <span style="color: #18bc9c">metrobus stations</span>. 
+                    <p> <b>The map on the left</b> shows the network of <span style="color: #4646ff"><b>metrorail stations</b></span> compared to <span style="color: #18bc9c"><b>metrobus stations</b></span>. 
                     <br><br>
-                    <b>The map on the right</b> shows the network of <span style="color: #ff8c00">metromover stations</span> compared to <span style="color: #18bc9c">metrobus stations</span>.
+                    <b>The map on the right</b> shows the network of <span style="color: #ff8c00"><b>metromover stations</b></span> compared to <span style="color: #18bc9c"><b>metrobus stations</b></span>.
                     </p>
-                    <p style="float: left;"> Annual ridership of public transportation in the county has steadily increased since 2003, reaching a record high ridership of 114,208,800 in 2008. During the recession, ridership decreased as a result of job losses. However, with the improvement of the economy in 2010, ridership is slowly increasing.
+                    <p style="float: left;"> Annual ridership of public transportation in the county has steadily increased since 2003, reaching a record high ridership of 114,208,800 in 2008. During the recession, ridership decreased as a result of job losses. However, with the improvement of the economy in 2010, ridership is slowly increasing.<br><br>
+                    In fact, annual metrobus ridership data shows how during the economic recession ridership sharply declined. It was not until the Miami-Dade economy started improving in 2010, that metrobus ridership began to increase.  
                     <h4 style="float: left;">Annual Ridership by Mode of Transportation</h4>
                     </p>
 
@@ -219,7 +227,7 @@ text.linelabel {
                     <!-- <h4 style="float: left;">Total Annual Ridership in Miami-Dade County</h4> -->
                     <!-- <div id="firstLineChart" style="margin-left: 25px;"></div>  -->
                     <p>
-                    <h4 style="float: left;">Annual Ridership by Mode of Transportation........................</h4>
+                    <h4 style="float: left;">Annual Ridership by Mode of Transportation<span style="color: white;">........................</span></h4>
                     </p>
                     <br><br>
                     <div class="btn-group" role="group" aria-label="...">
@@ -241,7 +249,7 @@ text.linelabel {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                <img src="img/bus.jpg">
+                <img src="img/bus_Pencil.jpg">
                     <h2>Metrobus</h2><br><br>
                 </div>
             </div>
@@ -261,10 +269,10 @@ text.linelabel {
                     <p>Ridership preferences show that the metrobus is mostly used during Monday through Friday. This provides insight that metrobus is heavily used by commuters. </p>
                     <p style="float: right;">In fact, annual metrobus ridership data shows how during the economic recession ridership sharply declined. It was not until the Miami-Dade economy started improving in 2010, that metrobus ridership began to increase.  
                     </p>
-                    <h4 style="float: left;">Metrobus Annual Ridership in Miami-Dade County</h4>
-                    <div id="secondLineChart"></div>
+                    <!-- <h4 style="float: left;">Metrobus Annual Ridership in Miami-Dade County</h4>
+                    <div id="secondLineChart"></div> -->
                     <p>The most popular metrobus route is Route S with an average monthly ridership of more than 350,000 riders since 2009. Route S starts at the Government Center in Downtown Miami, crosses to Miami Beach over the MacArthur Causeway and transits Collins Avenue until reaching Aventura Boulevard.</p>
-                    <h4>Metrobus Route Ridership in Miami-Dade County</h4>
+                    <h4 style="float: left;">Metrobus Route Ridership in Miami-Dade County</h4>
                 <div id="voronoiChart"></div> 
                     <p>Route 11 is the second most popular route stretching from Downtown Miami west to 107th Avenue on Flagler St and ending at FIU Modesto Maidique Campus. Route 11 has a monthly ridership average of over 300,000 riders.</p>
                     <p>Route L, with an average of more than 250,00 riders, is the third most ppular route. It starts at the Miami Beach Convention Center, goes north on Collins Avenue and heads west on the 79 St Causeway to the Hialeah Metrorail Station stopping at the Northside Metrorail Station, Amtrak Passenger Terminal, and Tri-Rail Metrorail Station.</p>
@@ -285,7 +293,7 @@ text.linelabel {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                <img src="img/miamiBus.jpg" style="width:608px;height:408px;">
+                <img src="img/miamiBus_Pencil.jpg" style="width:608px;height:408px;">
                     <h2>The Challenge</h2><br><br>
                     <!-- <hr class="star-primary"> -->
                 </div>
@@ -296,7 +304,7 @@ text.linelabel {
                     <p>Yet, it is precisely the southwestern portions of the county that have an even more limited transportation infrastructure. In the next couple of years, Miami-Dade commuters can expect an increase in traffic congestion particularly in the areas of Kendall, Cutler Ridge, and Homestead, and on main highways like the Turnpike between Florida City and the City of Miami and the Palmetto (SR-826).</p>
                     <h4>Map of Metrobus Stations and Neighborhoods with Homes for Sale under $200,000</h4>
                     <div id="metrobusInfo" style="margin-left: 10px; float: left;"> </div>
-                    <p> According to Miami-Dade County data in 2014, the average per capita income was $43,000 yet median home prices in the county require prospective a buyer to make about $65,000 annually. The map on the right shows <span style="color: orange;"> areas in Miami with home prices below $200,000</span>, which are realistically what the majority of county residents could afford. Based on population growth trends and real estate market prices, it can be assumed that in the next 5-10 years many residents will purchase in these areas. Most of the areas have limited number of <span style="color: #18bc9c ">metrobus stations</span>.    </p>
+                    <p> According to Miami-Dade County data in 2014, the average per capita income was $43,000 yet median home prices in the county require prospective a buyer to make about $65,000 annually. The map on the right shows <span style="color: #ff4c4c;"> <b>areas in Miami with home prices below $200,000</b></span>, which are realistically what the majority of county residents could afford. Based on population growth trends and real estate market prices, it can be assumed that in the next 5-10 years many residents will purchase in these areas. Most of the areas have limited number of <span style="color: #18bc9c "><b>metrobus stations</b></span>.    </p>
                     <p> It’s going to take the energy and innovation of an engaged civic community to propose improvements to the public transportation system and to pressure the county government to act on those proposals. </p>
                 </div>
         </div>

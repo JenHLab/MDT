@@ -155,32 +155,6 @@ function loadVoronoi(error, data) {
 					.call(yAxis);
 
 
-					svg.append("text")
-	      .attr("x", function(d) {
-	      	if (d.emissions.length != 0) {
-		      	var lastYear = d.emissions[d.emissions.length-1].year;
-		      	return xScale(dateFormat.parse(lastYear));
-		      }
-	      })
-	      .attr("y", function(d) {
-	      	if (d.emissions.length != 0) {
-		      	var lastAmount = d.emissions[d.emissions.length-1].amount;
-		      	return yScale(+lastAmount);
-	      	}
-	      })
-	      .attr("dx", "3px")
-	      .attr("dy", "3px")
-	      .text(function(d) {
-	      	if (d.emissions.length != 0) {
-	      		var lastAmount = d.emissions[d.emissions.length-1].amount;
-	      		if (+lastAmount > 700000) {
-	      			return d.country;
-	      		}
-	      	}
-	      })
-	      .attr("class", "linelabel");
-
-
 				// here we add the mouseover and mouseout effect, and use the id we created to style it.
 				// this is on the g elements, because the country name is in the data there.
 				// the line itself has data of an array of x,y values.

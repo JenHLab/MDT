@@ -46,7 +46,7 @@ var path = d3.geo.path()
         .data(homes)
         .enter()
         .append("circle")
-        .style("fill", 'orange')
+        .style("fill", '#ff9999')
         .style("opacity", 0.7)
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];

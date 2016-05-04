@@ -61,7 +61,7 @@ metrobussvg.selectAll("circle")
         .data(metrorail)
         .enter()
         .append("circle")
-        .style("fill", "#2c3e50")
+        .style("fill", "#4646ff")
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];
         })
