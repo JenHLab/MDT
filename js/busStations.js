@@ -71,7 +71,6 @@ var path = d3.geo.path()
 
   mytooltip
     .data(homes)
-    .enter()
     .style("display", null) // this removes the display none setting from it
     .html("<p><b>Area:</b> " + d.town);
   }
