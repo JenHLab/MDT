@@ -2,8 +2,8 @@ function loadedBus(error, dadeM, metrobus, homes) {
   if (error) throw error;
 
   //global variables for map svgs for bus, metrorail and metromover stations
-var width = 410,
-    height = 600;
+var width = 310,
+    height = 800;
 
 var projection = d3.geo.conicEqualArea()
       .parallels([31,25])
@@ -37,7 +37,7 @@ var path = d3.geo.path()
               .data(topojson.feature(dadeM, dadeM.objects.dade).features)
               .enter().append("path")
               .attr("d", path)
-              .style("stroke-opacity", 0)
+              .style("stroke-opacity", 0);
               //.style("fill", 'blue');
 
   //Append circles to show metrorail stations and append mytooltip 
@@ -69,7 +69,11 @@ var path = d3.geo.path()
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 1)
+        .attr("r", 1);
+
+
+
+        
 
 
   function mouseover(d) {

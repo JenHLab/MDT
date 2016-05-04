@@ -95,6 +95,10 @@ circle {
   fill: #18bc9c;   
 }
 
+.selected {
+                background-color: #2c3e50;
+            }
+
 /* Style for Custom mytooltip for map svgs */
 div.mytooltip {
     font-family: sans-serif;
@@ -123,6 +127,12 @@ div.mytooltip {
 hr{
     color: #18bc9c;
 }
+
+text.linelabel {
+                font-size: 9pt;
+                color: gray;
+            }
+
 
 
     </style>
@@ -195,10 +205,32 @@ hr{
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>The public transportation system in the county is managed by the Miami-Dade Transit (MDT) agency. MDT can trace its origins back to 1960 when County Commission passed an ordinance to unify the different transit operations into one countywide service.</p>
-                    <p>MDT offers bus services (Metrobus), rail services (Metrorail and Metromover), and Paratransit services, which is a door to door service for residents with disabilities. Annual ridership of public transportation in the county has steadily increased since 2003, reaching a record high ridership of 114,208,800 in 2008. During the recession, ridership decreased as a result of job losses. However, with the improvement of the economy in 2010, ridership is slowly increasing.</p>
-                    <h4>Total Annual Ridership in Miami-Dade County</h4>
-                    <div id="firstLineChart" style="margin-left: 25px;"></div> 
-                    <p>TIn recent years, an increase in traffic congestion has raised the issue of the county’s limited transportation options for commuters who live in the southwest areas of the county and work closer to the City of Miami. While county officials have proposed plans to expand roads, install intelligent traffic signals and construct new metrorail stations, not much has been discussed on how to improve the metrobus system, the most popular public transportation option for residents.</p>
+                    <p>MDT offers bus services (Metrobus), rail services (Metrorail and Metromover), and Paratransit services, which is a door to door service for residents with disabilities.</p>
+                    <div id="metrorailInfo" style="float: left;"></div><div id="metromoverInfo" style="float: right;"></div>
+                    <p> <b>The map on the left</b> shows the network of <span style="color: blue">metrorail stations</span> compared to <span style="color: #18bc9c">metrobus stations</span>. 
+                    <br><br>
+                    <b>The map on the right</b> shows the network of <span style="color: #ff8c00">metromover stations</span> compared to <span style="color: #18bc9c">metrobus stations</span>.
+                    </p>
+                    <p style="float: left;"> Annual ridership of public transportation in the county has steadily increased since 2003, reaching a record high ridership of 114,208,800 in 2008. During the recession, ridership decreased as a result of job losses. However, with the improvement of the economy in 2010, ridership is slowly increasing.
+                    <h4 style="float: left;">Annual Ridership by Mode of Transportation</h4>
+                    </p>
+
+
+                    <!-- <h4 style="float: left;">Total Annual Ridership in Miami-Dade County</h4> -->
+                    <!-- <div id="firstLineChart" style="margin-left: 25px;"></div>  -->
+                    <p>
+                    <h4 style="float: left;">Annual Ridership by Mode of Transportation........................</h4>
+                    </p>
+                    <br><br>
+                    <div class="btn-group" role="group" aria-label="...">
+                                      <button type="button" class="btn btn-default" id="Metrobus">Metrobus</button>
+                                      <button type="button" class="btn btn-default" id="Metrorail">Metromover</button>
+                                      <button type="button" class="btn btn-default" id="Metromover">Metrorail</button>
+                                      <button type="button" class="btn btn-default" id="Total">Total</button>
+                                      
+                                    </div>
+                    <div id="lineTransition"></div>
+                    <p>In recent years, an increase in traffic congestion has raised the issue of the county’s limited transportation options for commuters who live in the southwest areas of the county and work closer to the City of Miami. While county officials have proposed plans to expand roads, install intelligent traffic signals and construct new metrorail stations, not much has been discussed on how to improve the metrobus system, the most popular public transportation option for residents.</p>
                     
                 </div>
         </div>
@@ -352,8 +384,14 @@ hr{
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <!-- queue js -->
     <script src="https://d3js.org/queue.v1.min.js"></script> 
+    <!-- Map: Metrobus, and Metrorail -->
+    <script type="text/javascript" src="js/modesMap.js"></script>
+    <!-- Map: Metrobus and Metromover -->
+    <script type="text/javascript" src="js/modesMapTwo.js"></script>
     <!-- Line chart: Ridership over the years -->
     <script type="text/javascript" src="js/annualR.js"></script>
+    <!-- Multiple Line chart: Ridership over the years for metrorail, metrobus and metromover -->
+    <script type="text/javascript" src="js/ridershipTimeline.js"></script>
     <!-- Line chart: MetroBus ridership over the years -->
     <script type="text/javascript" src="js/annual_MetroBus.js"></script> 
     <!-- Stacked bar: Ridership mode preferences and day of the week ridership -->
@@ -366,10 +404,30 @@ hr{
 
     <script type="text/javascript">
 
+        //Map One: Metrorail and Metrobus stations
+        queue()
+            .defer(d3.json, "data/dade.json")
+            .defer(d3.csv, "data/Metrorail_Stations.csv")
+            .defer(d3.csv, "data/bus_stop.csv")
+            .await(loadMapOne);
+
+        //Map Two: Metromover and Metrobus stations
+        queue()
+            .defer(d3.json, "data/dade.json")
+            .defer(d3.csv, "data/Metromover_Stations.csv")
+            .defer(d3.csv, "data/bus_stop.csv")
+            .await(loadMapTwo);
+
         //Line chart: Ridership over the years
         queue()
           .defer(d3.csv, "data/annual_ridership.csv")
           .await(loadAnnual);
+
+        //Multiple line chart: Ridership over the years for metrorail, metrobus and metromover
+        queue()
+          .defer(d3.csv, "data/multipleLine.csv")
+          .await(loadMultiple);
+
         //Line chart: Bus ridership over the years
         queue()
           .defer(d3.csv, "data/annual_ridership_metroBus.csv")
