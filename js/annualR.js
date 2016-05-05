@@ -1,8 +1,8 @@
 
 function loadAnnual(annualR) {
 
-  var fullwidth = 700;
-  var fullheight = 300;
+  var fullwidth = 410;
+  var fullheight = 500;
   var margin = { top: 20, right: 10, bottom: 50, left: 100};
 
   var width = fullwidth - margin.left - margin.right;

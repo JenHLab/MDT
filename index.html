@@ -96,13 +96,16 @@ circle:hover {
         div.mytooltip {
             font-family: sans-serif;
             font: 12px;
+            font-weight: bold;
+            color: white;
             position: absolute;
             text-align: left;
             min-width: 20px;
-            height: 60px;
+            height: 70px;
             padding: 2px;
             font: 12px sans-serif;
-            background: #f2f2f2;
+            background: #18bc9c;
+            opacity: 1;
             border-radius: 5px;
             pointer-events: none;
         }
@@ -196,7 +199,7 @@ circle:hover {
                     <p>The Metrobus in Miami-Dade is the only countywide public transportation system. Miami-Dade Transit (MDT) manages the Metrobus, as well as the Metrorail and Metromover, both rail services, and the Special Transportation Service (STS)- a door to door service for individuals with disabilities. </p>
                     <p>MDT traces its origins back to 1960, when the County Commission passed an ordinance to unify the different transit operations into one countywide service.  The bus system began fully operating in 1962 under the county’s supervision.</p>
                     <p>The <span style="color: #18bc9c;"><b>Metrobus</b></span> has over 90 bus routes, 600 buses and more than 7,000 bus stops servicing areas from Miami Beach to West Miami-Dade, and from Key Largo to the Broward County line. </p>
-                    <h4>Metrobus Stops and Metrorail and Metromover Stations</h4>
+                    <h3>Metrobus Stops and Metrorail and Metromover Stations</h3>
                 <div id="metrorailInfo" style="float: left;"></div><div id="metromoverInfo" style="float: right;"></div>
                     <p> <b>The map on the left</b> shows the network of <span style="color: #4646ff"><b>Metrorail stations</b></span> compared to <span style="color: #18bc9c"><b>Metrobus stops</b></span>. 
                     <br><br>
@@ -230,7 +233,7 @@ circle:hover {
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>As the only countywide transportation mode in Miami-Dade, the Metrobus has an annual ridership of more than 60,000 million in the past couple of years compared to the Metrorail with an annual ridership of more than 5 million and the Metromover with 10 million. </p> 
                     <p><p>
-                    <h4>Annual Ridership by Mode of Transportation</h4>
+                    <h3>Annual Ridership by Mode of Transportation</h3>
                     </p>
                     <br><br>
                     <div class="btn-group" role="group" aria-label="...">
@@ -244,7 +247,7 @@ circle:hover {
 
                     <p>After the economic recession in 2008, Metrobus ridership sharply declined and began to improve again in 2010 as the economy recuperated. This proves that Metrobus services are used heavily and primarily by commuters. </p>
                     <p>In fact, ridership preferences data highlights that the Metrobus system is mostly used Monday through Friday, coinciding with traditional workweek schedules. On weekends, ridership significantly declines. </p>
-                    <h4>Ridership Preferences in Miami-Dade County (October, 2015)</h4>
+                    <h3>Ridership Preferences in Miami-Dade County (October, 2015)</h3>
                     <div id="form">
                         <label><input type="radio" name="mode" value="bycount" checked><b>Total Ridership</b> (day of the week)</label>
                         <label><input type="radio" name="mode" value="bypercent"><b>As Percent of Ridership Preferences</b></label>
@@ -252,7 +255,7 @@ circle:hover {
                     <div id="chart"></div>
                     </div>
                     <p>The most popular Metrobus route is Route S with an average monthly ridership of over 350,000 since 2009. Route S starts at the Government Center in Downtown Miami, crosses to Miami Beach over the MacArthur Causeway and transits Collins Avenue until reaching Aventura Boulevard in the North. </p>
-                    <h4>Metrobus Route Ridership in Miami-Dade County</h4>
+                    <h3>Metrobus Route Ridership in Miami-Dade County</h3>
                 <div id="voronoiChart"></div> 
                     <p>Ridership preferences show that the Metrobus is mostly used during Monday through Friday. This provides insight that Metrobus is heavily used by commuters. </p>
                     <p>Route 11 is the second most popular route stretching from Downtown Miami west to 107th Avenue on Flagler St and ending at FIU Modesto Maidique Campus. Route 11 has a monthly ridership average of over 300,000 riders.</p>
@@ -279,8 +282,10 @@ circle:hover {
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>Some challenges are imminent in the process of fixing transportation in Miami. Metrobus service is limited in the South and SouthWestern regions of the county.  This area is serviced by the South Miami-Dade Busway- a 56 stop service offering an alternative to driving between Florida City and Dadeland South Metrorail station; and a few other routes with a limited number of stops. </p>
                     <p>A major challenge will be to innovate Metrobus services in these areas to accommodate the trends in population growth and rising prices in the real estate market which are making new, affordable constructions under $200,000 in the southwestern areas of the county appealing for residents looking to purchase a home, particularly residents under 50 years old.</p>
-                    <h4>Map of Metrobus Stops and Neighborhoods with Homes for Sale under $200,000</h4>
-                    <div id="metrobusInfo" style="margin-left: 170px;"> </div>
+                    <h3>Map of Metrobus Stops and Neighborhoods with Homes for Sale under $200,000</h3>
+                    <div id="metrobusInfo" style="float: left; margin-left: 50px;"> </div>
+                    <div id="jobsInfo" style="float: right; margin-right: 50px;"> </div>
+                    <p style="clear: right;">The above map shows the <span style="color: red;"> areas with affordable houses (under $200,000)</span> for individuals looking to buy. These areas have limited Metrobus stops and access to only one highway-Florida’s Turnpike. The map on the right shows the <span style="color: #4b86b4;">areas in the county with the largest concentration of jobs</span>.</p>
                     <p>The area has also seen an increase in traffic congestion in the Turnpike and the Palmetto (SR-836) resulting from all new residents moving to the area and commuting north to the Downtown Miami area and north Miami-Dade, where most jobs are concentrated. </p>
                     <p>It will take the energy, passion and innovation of an engaged civic community to propose and implement plans to improve Metrobus services and the public transportation system in Miami-Dade county.</p>
                     <p style="font-size: 14px;">
@@ -379,6 +384,8 @@ circle:hover {
     <script type="text/javascript" src="js/voronoi.js"></script>
     <!-- BUS station map -->
     <script type="text/javascript" src="js/busStations.js"></script>
+    <!-- Jobs map -->
+    <script type="text/javascript" src="js/mapThree.js"></script>
 
     <script type="text/javascript">
 
@@ -392,12 +399,13 @@ circle:hover {
             .defer(d3.csv, "data/total_ridership_2015.csv") //data -- loadIntroGraph
             .defer(d3.csv, "data/routeRidership.csv")//voronoi -- loadVoronoi
             .defer(d3.csv, "data/homes.csv")//homes -- loadedBus
+            .defer(d3.csv, "data/jobs.csv")//jobs-- loadedJobs
             .await(loaded);
         
         //function loaded
 
 
-        function loaded(error, dadeM, metrorail, metrobus, metromover, timeline, data, voronoi, homes) {
+        function loaded(error, dadeM, metrorail, metrobus, metromover, timeline, data, voronoi, homes, jobs) {
 
       if (error) {console.log(error);}
 
@@ -407,6 +415,7 @@ circle:hover {
       loadIntroGraph(data);
       loadVoronoi(voronoi);
       loadedBus(dadeM, metrobus, homes);
+      loadedJobs(dadeM, metrobus, jobs);
     }
         /*//Map One: Metrorail and metrobus stops
         queue()

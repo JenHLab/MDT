@@ -3,7 +3,7 @@ function loadVoronoi(voronoi) {
 
 //Dimensions and padding
             var fullwidth = 700;
-			var fullheight = 600;
+			var fullheight = 500;
 			var margin = { top: 20, right: 30, bottom: 40, left: 100};
 
 			var width = fullwidth - margin.left - margin.right;
@@ -138,12 +138,12 @@ function loadVoronoi(voronoi) {
 					   .attr("d", line); // calls the line function you defined above, using that array
 
                 svg.append("text")
-                    .attr("x", (width - 660))             
-                    .attr("y", 7 - (margin.top / 2))
+                    .attr("x", (width - 30))             
+                    .attr("y", 75 - (margin.top / 2))
                     .style("font-weight", "bold") 
-                    .style("font-size", "19px") 
-                    .style("fill", "#0365d4");  
-                    /*.text("Theme route Visitors 2007-2014");*/
+                    .style("font-size", "15px") 
+                    .style("fill", "black")  
+                    .text("Route S");
 				//Axes
 				svg.append("g")
 					.attr("class", "x axis")

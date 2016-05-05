@@ -1,4 +1,4 @@
-function loadedBus(dadeM, metrobus, homes) {
+function loadedJobs(dadeM, metrobus, jobs) {
 
 
   //global variables for map svgs for bus, metrorail and metromover stations
@@ -21,7 +21,7 @@ var path = d3.geo.path()
     .projection(projection);
 
   //Declare metrobuslsvg and append it to metrobusInfo div
-  var metrobussvg= d3.select("#metrobusInfo").append("svg")
+  var metrobussvg= d3.select("#jobsInfo").append("svg")
                         .attr("width", width)
                         .attr("height", height);
 
@@ -41,13 +41,13 @@ var path = d3.geo.path()
 
   //Append circles to show metrorail stations and append mytooltip 
 
-  metrobussvg.selectAll("circle.homes")
-        .data(homes)
+  metrobussvg.selectAll("circle,jobs")
+        .data(jobs)
         .enter()
         .append("circle")
-        .attr("class", "homes")
-        .style("fill", '#ff9999')
-        .style("opacity", 0.5)
+        .attr("class", "jobs")
+        .style("fill", "#4b86b4")
+        .style("opacity", 0.7)
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];
         })
@@ -62,12 +62,16 @@ var path = d3.geo.path()
   function mouseover(d) {
   // this will highlight both a dot and its line.
 
+  
+
   d3.select(this)
     .transition()
     .style("stroke", "black");
 
+  
+
   mytooltip
-    .data(homes)
+    .data(jobs)
     .style("display", null) // this removes the display none setting from it
     .html("<p><b>Area:</b> " + d.town);
   }

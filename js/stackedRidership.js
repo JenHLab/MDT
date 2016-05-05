@@ -7,7 +7,7 @@ var cities = ["Metrobus","Metrorail","Metromover","STS"];
 
 var currentMode = "bycount";
 
-var fullwidth = 500, fullheight = 300;
+var fullwidth = 510, fullheight = 300;
 
 var margin = {top: 10, right: 170, bottom: 80, left: 80},
     width = fullwidth - margin.left - margin.right,

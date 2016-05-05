@@ -2,8 +2,8 @@
 			function loadMultiple(timeline) {
 
 				//Dimensions and padding
-			var fullwidth = 500;
-			var fullheight = 450;
+			var fullwidth = 710;
+			var fullheight = 400;
 			var margin = {top: 20, right: 10, bottom: 40, left: 70};
 
 			var width = fullwidth - margin.left - margin.right;

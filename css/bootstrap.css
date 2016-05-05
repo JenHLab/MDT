@@ -1249,8 +1249,8 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: 10.5px;
-  margin-bottom: 10.5px;
+  /*margin-top: 10.5px;
+  margin-bottom: 10.5px;*/
 }
 h4 small,
 .h4 small,
@@ -2552,7 +2552,7 @@ output {
   color: #2c3e50;
 }
 .form-control {
-  display: block;
+  /*display: block;*/
   width: 100%;
   height: 45px;
   padding: 10px 15px;

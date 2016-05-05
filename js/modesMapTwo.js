@@ -2,7 +2,7 @@ function loadMapTwo(dadeM, metromover, metrobus) {
 
   //global variables for map svgs for bus, metrorail and metromover stations
 var width = 410,
-    height = 600;
+    height = 500;
 
 var projection = d3.geo.conicEqualArea()
       .parallels([31,25])
@@ -25,10 +25,9 @@ var path = d3.geo.path()
                         .attr("height", height);
 
   // Append Div for mytooltip to metrobuslsvg
-  var div = d3.select("#metromoverInfo")
-              .append("div")
-              .attr("class", "mytooltip")
-              .style("display", "none");
+  var mytooltip = d3.select("body")
+        .append("div")
+        .attr("class", "mytooltip");
 
 
   //Append map to metrobuslsvg to plot the lat and lon of metrobus stations
@@ -43,10 +42,11 @@ var path = d3.geo.path()
 
 
   
-metrobussvg.selectAll("circle")
+metrobussvg.selectAll("circle.metromover")
         .data(metromover)
         .enter()
         .append("circle")
+        .attr("class", "metromover")
         .style("fill", '#ff8c00')
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];
@@ -54,12 +54,41 @@ metrobussvg.selectAll("circle")
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 5);
+        .attr("r", 5)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
 
-  metrobussvg.selectAll("circle")
+  function mouseover(d) {
+  // this will highlight both a dot and its line.
+  d3.select(this)
+    .transition()
+    .style("stroke", "black");
+  mytooltip
+    .data(metromover)
+    .style("display", null) // this removes the display none setting from it
+    .html("<p><b>Station Name:</b> " + d.name+ "<br> <b>Address:</b> " + d.address);
+  }
+
+  function mousemove(d) {
+    mytooltip
+      .style("top", (d3.event.pageY - 10) + "px" )
+      .style("left", (d3.event.pageX + 10) + "px");
+    }
+
+  function mouseout(d) {
+    d3.select(this)
+      .transition()
+      .style("stroke", "none");
+
+    mytooltip.style("display", "none");  // this sets it to invisible!
+  }
+
+  metrobussvg.selectAll("circle.stop")
         .data(metrobus)
         .enter()
         .append("circle")
+        .attr("class", "stop")
         .style("opacity", 0.2)
         .attr("cx", function(d) {
             return projection([d.lon, d.lat])[0];
@@ -67,7 +96,22 @@ metrobussvg.selectAll("circle")
         .attr("cy", function(d) {
             return projection([d.lon, d.lat])[1];
         })
-        .attr("r", 1);
+        .attr("r", 1)
+        .on("mouseover", mouseover1)
+        .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
+
+        function mouseover1(d) {
+  // this will highlight both a dot and its line.
+
+      d3.select(this)
+        .transition()
+        .style("stroke", "black");
+      mytooltip
+        .data(metrobus)
+        .style("display", null) // this removes the display none setting from it
+        .html("<p><b>Stop ID:</b> " + d.stopid+ "<br> <b>Main Street:</b> " + d.main_street+ "<br> <b> Cross Street:</b> " + d.cross_street);
+  }
 
 
   
